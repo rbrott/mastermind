@@ -216,6 +216,7 @@ Game.prototype.initRender = function() {
         buttonSeq = [];
     for (var j = 0; j < o.numSlots; j++) {
       var well = this.paper.circle(offX + sqWidth * (j + 0.5), offY + sqWidth * (i + 0.5), o.wellRadius);
+      well.click(Game.prototype.onWellClick.bind(this, i, j));
       wellSeq.push(well);
       var button = this.paper.circle(offX + totalSeqWidth + buttonWidth * (j + 0.5), offY + sqWidth * (i + 0.5), o.buttonRadius);
       buttonSeq.push(button);
@@ -238,6 +239,20 @@ Game.prototype.initRender = function() {
 };
 Game.prototype.attach = function(el) {
   el.appendChild(this.el);
+};
+Game.prototype.onWellClick = function(i, j, evt) {
+  if (i == this.sequences.length) {
+    for (var k = 0; k < this.wells[i].length; k++) {
+      this.wells[i][k].attr({
+        fill: this.opts.circleColor
+      });
+    }
+    this.currentSequence.splice(j, 1);
+    var temp = this.currentSequence;
+    this.currentSequence = [];
+    this.currentIndex = 0;
+    this.playSequence(temp);
+  }
 };
 Game.prototype.onColorClick = function(index, evt) {
   if (this.finished) return;

@@ -18,7 +18,12 @@
       var restart = document.getElementById("restart"),
           solve = document.getElementById("solve"),
           reveal = document.getElementById("reveal"),
-          rules = document.getElementById("rules");
+          rules = document.getElementById("rules"),
+          clear = document.getElementById("clear");
+      paragraph.style.width = game.el.getAttribute("width") + "px";
+      clear.addEventListener("click", function() {
+        game.clear();
+      });
       restart.addEventListener("click", function() {
         game.restart();
       });
@@ -58,13 +63,21 @@
       <h1>Mastermind</h1>
       <div id="board">
         <header>
-          <div class="button blue" id="restart">Restart</div>
+          <div class="button blue" id="restart">New</div>
+          <div class="button blue" id="clear">Clear</div>
           <div class="button blue" id="solve">Solve</div>
           <div class="button blue" id="reveal">Reveal</div>
           <div class="button red" id="rules">Rules</div>
         </header>
         <p id="paragraph">
-          <span style="font-weight: bold;">How to Play: </span>
+          <span style="font-weight: bold;">
+            How to Play:
+          </span><br>
+          The computer has randomly generated a sequence of colors. The objective of the game is to guess the computer's combination.
+          Each turn, click the colored buttons on the left to add it to the sequence. Once you're finished, the computer will score
+          your guess. Each black indicates that one color is in the correct position. Each white indicates that a color is present
+          in the hidden combination, but is in the wrong position. A score of four black constitutes a win. Try and guess the
+          combination in as few guesses as possible. Good luck!
         </p>
       </div>
     </div>
