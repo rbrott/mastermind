@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Mastermind</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="snap.svg-min.js"></script>
+    <script src="game.js"></script>
+    <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      window.game = new Game({
+        numSequences: 8
+      });
+      var div = document.getElementById("container");
+      div.style.margin = "auto";
+      game.attach(div);
+      window.hidden = true;
+      window.paragraph = document.getElementById("paragraph");
+      var restart = document.getElementById("restart"),
+          solve = document.getElementById("solve"),
+          reveal = document.getElementById("reveal"),
+          rules = document.getElementById("rules");
+      restart.addEventListener("click", function() {
+        game.restart();
+      });
+      solve.addEventListener("click", function() {
+        game.solve();
+      });
+      reveal.addEventListener("click", function() {
+        game.reveal();
+      });
+      rules.addEventListener("click", function() {
+        if (hidden) {
+          paragraph.style.display = "block";
+        } else {
+          paragraph.style.display = "none";
+        }
+        hidden = !hidden;
+      });
+      var buttons = document.getElementsByClassName("button");
+      for (var i = 0; i < buttons.length; i++) {
+        var button = buttons[i];
+        button.addEventListener("mousedown", (function(btn) {
+          return function() {
+            btn.className += " pressed";
+          };
+        })(button));
+        button.addEventListener("mouseup", (function(btn) {
+          return function() {
+            btn.className = btn.className.replace(/ pressed/g, "");
+          };
+        })(button));
+      }
+    });
+    </script>
+  </head>
+  <body>
+    <div id="container" class="noselect">
+      <h1>Mastermind</h1>
+      <div id="board">
+        <header>
+          <div class="button blue" id="restart">Restart</div>
+          <div class="button blue" id="solve">Solve</div>
+          <div class="button blue" id="reveal">Reveal</div>
+          <div class="button red" id="rules">Rules</div>
+        </header>
+        <p id="paragraph">
+          <span style="font-weight: bold;">How to Play: </span>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

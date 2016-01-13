@@ -1,0 +1,60 @@
+body {
+  font-family: Arial;
+}
+
+header {
+  padding-left: 5px;
+}
+
+h1 {
+  font-weight: 100;
+  letter-spacing: -3px;
+  font-size: 64px;
+  padding: 5px;
+  margin: 5px;
+}
+
+p#paragraph {
+  display: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.noselect {
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.button {
+  cursor: pointer;
+  border-radius: 6px;
+  color: white;
+  padding: 8px;
+  margin: 6px;
+  letter-spacing: 0.75px;
+  font-size: 17px;
+  width: auto;
+  display: inline-block;
+  background-color: rgb(200, 200, 200);
+  box-shadow: 2.5px 2.5px 0px rgba(200, 200, 200, 0.6);
+}
+
+.blue {
+  background-color: rgb(56, 177, 212);
+  box-shadow: 2.5px 2.5px 0px rgba(56, 177, 212, 0.6);
+}
+
+.red {
+  background-color: rgb(214, 54, 49);
+  box-shadow: 2.5px 2.5px 0px rgba(214, 54, 49, 0.6);
+}
+
+.pressed {
+  box-shadow: none;
+  position: relative;
+  top: 2.5px;
+  left: 2.5px;
+}
