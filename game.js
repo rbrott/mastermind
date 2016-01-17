@@ -204,6 +204,8 @@ Game.prototype.initRender = function() {
       offY = o.padding,
       width = totalWidth + 2 * o.padding,
       height = totalHeight + 2 * o.padding;
+  this.width = width;
+  this.height = height;
   // <svg> element; note the createElementNS line
   this.el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   this.el.setAttribute("width", width);
