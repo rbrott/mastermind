@@ -196,11 +196,13 @@ Game.prototype.initRender = function() {
       totalWidth = totalSeqWidth + totalButtonWidth + totalColorsWidth,
       totalHeight = o.numSequences * sqWidth,
       offX = o.padding,
-      offY = o.padding;
+      offY = o.padding,
+      width = totalWidth + 2 * o.padding,
+      height = totalHeight + 2 * o.padding;
   // <svg> element; note the createElementNS line
   this.el = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-  this.el.setAttribute("width", totalWidth + 2 * o.padding);
-  this.el.setAttribute("height", totalHeight + 2 * o.padding);
+  this.el.setAttribute("width", width);
+  this.el.setAttribute("height", height);
   // paper
   this.paper = Snap(this.el);
   // background rect
