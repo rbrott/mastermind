@@ -28,7 +28,9 @@
         game.restart();
       });
       solve.addEventListener("click", function() {
-        game.solve();
+        setTimeout(function() {
+          game.solve();
+        }, 100);
       });
       reveal.addEventListener("click", function() {
         game.reveal();
