@@ -59,6 +59,7 @@ function avg(nums) {
 }
 
 function max(list, fn) {
+  var dup = false;
   fn = fn || function(x) { return x; };
   var max_ = Number.NEGATIVE_INFINITY, maxIndex = 0;
   for (var i = 0; i < list.length; i++) {
@@ -66,8 +67,12 @@ function max(list, fn) {
     if (val > max_) {
       max_ = val;
       maxIndex = i;
+      dup = false;
+    } else if (val == max_) {
+      dup = true;
     }
   }
+  if (dup) console.log(list);
   return maxIndex;
 }
 
