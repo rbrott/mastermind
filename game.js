@@ -259,7 +259,6 @@ Game.prototype.onWellClick = function(i, j, evt) {
     this.currentSequence.splice(j, 1);
     var temp = this.currentSequence;
     this.currentSequence = [];
-    this.currentIndex = 0;
     this.playSequence(temp);
   }
 };
