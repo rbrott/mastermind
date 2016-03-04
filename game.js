@@ -5,7 +5,7 @@ Array.prototype.equals = function(other) {
   for (var i = 0; i < this.length; i++) {
     var a = this[i],
         b = other[i];
-    if ((a instanceof Array) && (b instanceof Array)) {
+    if (a instanceof Array && b instanceof Array) {
       if (!a.equals(b)) {
         return false;
       }
@@ -339,7 +339,7 @@ Game.prototype.solve = function() {
   var poss = generatePermutations(this.opts.numColors, this.opts.numSlots),
       guess = [0, 0, 1, 1],
       results = [[0, 0], [1, 0], [2, 0], [3, 0], [4, 0], [0, 1], [1, 1], [2, 1], [3, 1], [0, 2], [1, 2], [2, 2], [0, 3], [1, 3], [0, 4]];
-  while (!game.finished) {
+  while (!this.finished) {
     var result = this.playSequence(guess),
         nums = [];
     filterPossibilities(poss, guess, result);
