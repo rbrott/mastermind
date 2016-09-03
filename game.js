@@ -264,9 +264,9 @@ Game.prototype.onWellClick = function(i, j, evt) {
 };
 Game.prototype.onColorClick = function(index, evt) {
   if (this.finished) return;
-  if ((this.currentIndex) === this.opts.numSequences && this.currentSequence.length === 0) {
-    this.clear();
-  }
+  // if ((this.currentIndex) === this.opts.numSequences && this.currentSequence.length === 0) {
+  //   this.clear();
+  // }
   if (evt) {
     evt.preventDefault();
     evt.stopPropagation();
@@ -295,6 +295,17 @@ Game.prototype.onColorClick = function(index, evt) {
     if (blacks === 4) this.finished = true;
     this.currentIndex++;
     this.currentSequence = [];
+    if (this.currentIndex === this.opts.numSequences) {
+      var tempSeqs = this.sequences.clone();
+      tempSeqs.splice(0, 1);
+      var this_ = this;
+      setTimeout(function() {
+        this_.clear();
+        for (var i = 0; i < tempSeqs.length; i++) {
+          this_.playSequence(tempSeqs[i]);
+        }
+      }, 500);
+    }
     return result;
   }
   return null;
